@@ -279,10 +279,15 @@ bool IntBST::remove(int value){
         else if (current -> info < value) {
             current = current -> right;
         }
+        else {
+            if (current -> info == value) {
+                break;
+            }
+        }
     }
     if (target -> left != nullptr && target -> right != nullptr) {
         Node* succesorParent = target;
-        Node* successor = target -> left;
+        Node* successor = target -> right;
         while (successor -> left != nullptr) {
             succesorParent = successor;
             successor = successor -> left;
@@ -304,7 +309,7 @@ bool IntBST::remove(int value){
     else if (parent -> right == target){
         parent -> right = child;
     }
-    else {parent -> left = child;}
+    else
     {
         parent -> left = child;
     }

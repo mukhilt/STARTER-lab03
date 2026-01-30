@@ -271,20 +271,19 @@ bool IntBST::remove(int value){
     }
     Node* parent = nullptr;
     Node* current = root;
-    while (current != nullptr) {
+    while (current != nullptr && current->info != value) {
         parent = current;
         if (current -> info > value) {
             current = current -> left;
         }
-        else if (current -> info < value) {
+        else{
             current = current -> right;
         }
-        else {
-            if (current -> info == value) {
-                break;
-            }
-        }
     }
+    if (current == nullptr) {
+        return false;
+    }
+    target = current;
     if (target -> left != nullptr && target -> right != nullptr) {
         Node* succesorParent = target;
         Node* successor = target -> right;
